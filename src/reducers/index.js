@@ -1,5 +1,7 @@
 import { START_CALL, CALL_SUCCESS, CALL_FAILURE, START_ADD_SMURF, ADD_SMURF_SUCCESS, ADD_SMURF_FAILURE, SET_NEW_SMURF } from '../actions'
 
+// mconsole.log(SET_NEW_SMURF)
+
 export const initialState = {
     smurfs: [],
     appLoading: false,
@@ -15,6 +17,8 @@ export const initialState = {
 }
 
 export const reducer = (state = initialState, action)=>{
+    
+    console.log('reducer', action)
     switch (action.type){
         case START_CALL:
             return {
@@ -53,9 +57,10 @@ export const reducer = (state = initialState, action)=>{
                 error: action.payload
             }
         case SET_NEW_SMURF:
+            console.log('action', action)
             return {
                 ...state,
-                formValues: initialState.formValues,
+                formValues: action.payload
                 
             }
         default:

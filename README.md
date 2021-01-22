@@ -111,7 +111,7 @@ Example of object created in Smurf DB:
 ### Task 2: Project Requirements
 Your finished project must include all of the following requirements:
 
-- [x] Plan and implement how you are going to manage your state for your application
+- [] Plan and implement how you are going to manage your state for your application
 - [x] You _must_ use Redux as your state management system
 - [x] Complete the tasks listed within:
         * `./reducers/index.js`

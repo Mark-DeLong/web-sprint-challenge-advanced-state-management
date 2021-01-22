@@ -36,6 +36,7 @@ export const postSmurfs = () => (dispatch) => {
 };
 
 export const addNewSmurf = (formValues) =>  {
+    // console.log('test', formValues)
     return {
         type: SET_NEW_SMURF, payload: formValues
     }

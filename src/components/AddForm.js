@@ -1,14 +1,21 @@
 import React from 'react'
 import { addNewSmurf, postSmurfs } from '../actions'
 import { connect } from 'react-redux'
-// console.log(formValues.name)
+
+
 class AddForm extends React.Component {
 
     
 
     render() {
+        
+        
         console.log(this.props)
         const { formValues } = this.props
+
+        console.log(formValues, "this is not a string")
+
+
         console.log(formValues.name)
 
         const handleChange = (key, value) => {
