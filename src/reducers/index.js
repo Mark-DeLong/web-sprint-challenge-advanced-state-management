@@ -1,11 +1,71 @@
+import { START_CALL, CALL_SUCCESS, CALL_FAILURE, START_ADD_SMURF, ADD_SMURF_SUCCESS, ADD_SMURF_FAILURE, SET_NEW_SMURF } from '../actions'
 
 export const initialState = {
+    smurfs: [],
+    appLoading: false,
+    error: '',
+    newSmurf: {
+        id: Date.now(),
+        name: '',
+        nickname: '',
+        position: '',
+        description: ''
+    }
 }
 
-const reducer = ()=>{
+export const reducer = (state = initialState, action)=>{
+    switch (action.type){
+        case START_CALL:
+            return {
+                ...state,
+                appLoading: true,
+                error: ''
+            }
+        case CALL_SUCCESS:
+            return {
+                ...state,
+                smurfs: action.payload,
+                appLoading: false
+            }
+        case CALL_FAILURE:
+            return {
+                ...state,
+                appLoading: false,
+                error: action.payload
+            }
+        case START_ADD_SMURF:
+            return {
+                ...state,
+                appLoading: true,
+                error: ''
+            }
+        case ADD_SMURF_SUCCESS:
+            return {
+                ...state,
+                smurfs: action.payload,
+                appLoading: false
+            }
+        case ADD_SMURF_FAILURE:
+            return {
+                ...state,
+                appLoading: false,
+                error: action.payload
+            }
+        case SET_NEW_SMURF:
+            return {
+                ...state,
+                newSmurf: {
+                    id: action.payload.id,
+                    name: action.payload.name,
+                    nickname: action.payload.nickname,
+                    position: action.payload.position,
+                    description: action.payload.description
+                }
+            }
+        default:
+            return (state);
+    }
 }
-
-export default reducer;
 
 //Task List:
 //1. Add in the initialState needed to hold: 
