@@ -22,7 +22,7 @@ let smurfs = [
     nickname: 'Brainy',
     description: 'Brainy is the village intellectual who\'s not afraid to share his "wisdom" with his fellow Smurfs, even though it usually results in his being booted to the village limits or whacked in the head with a mallet.'
   }
-];
+]
 
 const sendUserError = (msg, ctx, res) => {
   
@@ -30,7 +30,7 @@ const sendUserError = (msg, ctx, res) => {
     ctx.status(422),
     ctx.json({ Error: msg })
   )
-};
+}
 
 export const handlers = [
     rest.get('http://localhost:3333/smurfs', (req, res, ctx) => {
@@ -41,7 +41,7 @@ export const handlers = [
     }),
 
     rest.post('http://localhost:3333/smurfs', (req, res, ctx) => {
-      // console.log(req.body);
+      
       const { name, position, nickname, description } = req.body;
       const newSmurf = { name, position, nickname, description, id: Date.now() }
 
