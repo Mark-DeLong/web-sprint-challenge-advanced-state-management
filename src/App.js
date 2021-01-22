@@ -36,7 +36,15 @@ class App extends Component {
   }
 }
 
-export default connect(null, { fetchSmurfs })(App)
+const mapStateToProps = state => {
+  return {
+      smurfs: state.smurfs,
+      error: state.error,
+      appLoading: state.appLoading,
+  }
+}
+
+export default connect(mapStateToProps, { fetchSmurfs })(App)
 
 //Task List:
 //1. Add in SmurfDisplay and AddForm into your application.

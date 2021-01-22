@@ -1,13 +1,8 @@
 import React from 'react'
-import { postSmurfs } from '../actions'
 import { connect } from 'react-redux'
-import Smurf from './Smurf'
 
 export class SmurfDisplay extends React.Component {
 
-    componentDidMount() {
-        this.props.postSmurfs()
-    }
     render() {
         return(
         <div>
@@ -42,18 +37,20 @@ export class SmurfDisplay extends React.Component {
                     </p>
                 </div>
             ))}
-        <Smurf />
+        {/* <Smurf /> */}
         </div>)
     }
 }
 
 const mapStateToProps = state => {
     return {
-        smurfs: state.smurfs
+        smurfs: state.smurfs,
+        error: state.error,
+        appLoading: state.appLoading,
     }
 }
 
-export default connect(mapStateToProps, { postSmurfs })(SmurfDisplay)
+export default connect(mapStateToProps, {})(SmurfDisplay)
 
 //Task List:
 //1. Import in all needed components and library methods.

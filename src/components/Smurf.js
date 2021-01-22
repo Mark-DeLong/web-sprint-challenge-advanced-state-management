@@ -9,6 +9,7 @@ class Smurf extends React.Component {
                 data-testid="smurf" 
                 className="card"
             >
+                
 
             </div>)
     }

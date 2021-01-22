@@ -1,21 +1,10 @@
 import React from 'react'
+import { formValues, postSmurfs } from '../actions'
 
 class AddForm extends React.Component {
 
-    state = {
-        id: Date.now(),
-        name: '',
-        position: '',
-        nickname: '',
-        description: ''
-    }
-
-    handleChange = (e) => {
-        console.log("Handle Change: ", e.target.name);
-        this.setState({
-            ...this.state.form,
-            [e.target.name]: e.target.value
-        })
+    handleChange = (key, value) => {
+        postSmurfs({ ...formValues, [key]: value })
     }
 
     render() {

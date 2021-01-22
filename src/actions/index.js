@@ -35,8 +35,10 @@ export const postSmurfs = () => (dispatch) => {
         });
 };
 
-export const addNewSmurf = () => (dispatch) => {
-    
+export const addNewSmurf = (formValues) =>  {
+    return {
+        type: SET_NEW_SMURF, payload: formValues,
+    }
 }
 
 //Task List:
