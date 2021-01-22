@@ -1,13 +1,24 @@
 import React from 'react'
-import { formValues, postSmurfs } from '../actions'
-
+import { addNewSmurf, postSmurfs } from '../actions'
+import { connect } from 'react-redux'
+// console.log(formValues.name)
 class AddForm extends React.Component {
 
-    handleChange = (key, value) => {
-        postSmurfs({ ...formValues, [key]: value })
-    }
+    
 
     render() {
+        console.log(this.props)
+        const { formValues } = this.props
+        console.log(formValues.name)
+
+        const handleChange = (key, value) => {
+            addNewSmurf({ ...formValues, [key]: value })
+        }
+
+        const onSubmit = () => {
+            postSmurfs(formValues)
+        }
+
         return(<section>
             <h2>Add Smurf</h2>
             <form>
@@ -21,10 +32,11 @@ class AddForm extends React.Component {
                     </label>
                     <br/>
                     <input 
-                        onChange={this.handleChange} 
+                        onChange={(e) => handleChange('name', e.target.value)} 
                         name="name" 
                         id="name" 
-                        value={this.state.name} 
+                        type="text"
+                        value={formValues.name} 
                     />
                     <label 
                         htmlFor="name"
@@ -33,10 +45,11 @@ class AddForm extends React.Component {
                     </label>
                     <br/>
                     <input 
-                        onChange={this.handleChange} 
+                        onChange={(e) => handleChange('position', e.target.value)} 
                         name="position" 
                         id="position" 
-                        value={this.state.position}
+                        type="text"
+                        value={formValues.position}
                     />
                     <label 
                         htmlFor="name"
@@ -45,10 +58,11 @@ class AddForm extends React.Component {
                     </label>
                     <br/>
                     <input 
-                        onChange={this.handleChange} 
+                        onChange={(e) => handleChange('nickname', e.target.value)}  
                         name="nickname" 
                         id="nickname" 
-                        value={this.state.nickname}
+                        type="text"
+                        value={formValues.nickname}
                     />
                     <label 
                         htmlFor="name"
@@ -56,10 +70,10 @@ class AddForm extends React.Component {
                     </label>
                     <br/>
                     <input 
-                        onChange={this.handleChange} 
+                       onChange={(e) => handleChange('description', e.target.value)} 
                         name="description" 
                         id="description" 
-                        value={this.state.description}
+                        value={formValues.description}
                     />
                 </div>
 
@@ -70,7 +84,10 @@ class AddForm extends React.Component {
                 >
                     Error: 
                 </div>
-                <button>
+                <button
+                    onClick={onSubmit}
+                    type="submit"
+                >
                     Submit Smurf
                 </button>
             </form>
@@ -78,4 +95,10 @@ class AddForm extends React.Component {
     }
 }
 
-export default AddForm;
+const mapStateToProps = state => {
+    return {
+        formValues:state.formValues,
+    }
+  }
+
+export default connect(mapStateToProps, {addNewSmurf, postSmurfs})(AddForm)

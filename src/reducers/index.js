@@ -3,8 +3,9 @@ import { START_CALL, CALL_SUCCESS, CALL_FAILURE, START_ADD_SMURF, ADD_SMURF_SUCC
 export const initialState = {
     smurfs: [],
     appLoading: false,
+    // formValues: {},
     error: '',
-    newSmurf: {
+    formValues: {
         id: Date.now(),
         name: '',
         nickname: '',
@@ -54,13 +55,8 @@ export const reducer = (state = initialState, action)=>{
         case SET_NEW_SMURF:
             return {
                 ...state,
-                newSmurf: {
-                    id: action.payload.id,
-                    name: action.payload.name,
-                    nickname: action.payload.nickname,
-                    position: action.payload.position,
-                    description: action.payload.description
-                }
+                formValues: initialState.formValues,
+                
             }
         default:
             return (state)

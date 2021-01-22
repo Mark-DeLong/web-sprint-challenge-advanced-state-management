@@ -6,10 +6,13 @@ import SmurfDisplay from './components/SmurfDisplay'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "./App.css";
 import { fetchSmurfs } from './actions'
+import axios from 'axios'
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchSmurfs()
+    axios.get('http://localhost:3333/smurfs').then(res=>{
+      console.log(res);
+    })
   }
   
   render() {
