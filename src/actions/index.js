@@ -26,7 +26,7 @@ export const fetchSmurfs = () => (dispatch) => {
 
 export const postSmurfs = () => (dispatch) => {
     axios
-        .post('http://localhost:/3333/smurfs')
+        .post('http://localhost:3333/smurfs')
         .then((res) => {
             dispatch({ type: CALL_SUCCESS, payload: res.data })
         })

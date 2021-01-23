@@ -37,7 +37,6 @@ export class SmurfDisplay extends React.Component {
                     </p>
                 </div>
             ))}
-        {/* <Smurf /> */}
         </div>)
     }
 }

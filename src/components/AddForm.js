@@ -2,28 +2,24 @@ import React from 'react'
 import { addNewSmurf, postSmurfs } from '../actions'
 import { connect } from 'react-redux'
 
-
 class AddForm extends React.Component {
 
-    
-
     render() {
-        
-        
+         
         console.log(this.props)
         const { formValues } = this.props
 
         console.log(formValues, "this is not a string")
 
 
-        console.log(formValues.name)
+        // console.log(formValues.name)
 
         const handleChange = (key, value) => {
-            addNewSmurf({ ...formValues, [key]: value })
+            this.props.addNewSmurf({ ...formValues, [key]: value })
         }
 
         const onSubmit = () => {
-            postSmurfs(formValues)
+            this.props.postSmurfs(formValues)
         }
 
         return(<section>
